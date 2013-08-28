@@ -88,8 +88,8 @@ It's what I use at work and at home now and seems to work for just about every p
 Main Directory Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-I've stopped relying on django-admin.py makeproject as I always changed the way it was setup. Instead, I'll
-manually create these directories in my project folder::
+I did stop relying on django-admin.py startproject until I took the time to make a template for my projects which can be found here https://github.com/dansackett/django_template.
+Here's my current setup though in terms of directories::
     
     apps
     bin
@@ -258,10 +258,10 @@ keep passwords and keys in a local.py file. In the directory project_name/settin
     local.py
     local.py.example
     
-These each can be seen on my sample project:
+These each can be seen on my sample project: https://github.com/dansackett/django_template/tree/master/project_name/settings
 
 Summary
 ^^^^^^^
 
 This structure seems to work well for me and keeps me very organized. Once that's in place, we can run Django commands, 
-build apps, and get the app running and deployed seamlessly. If you'd like to use this template, check out:
+build apps, and get the app running and deployed seamlessly. If you'd like to use this template, I made it easy with the template I mentioned above. There are instructions on that to help you get started.
