@@ -46,14 +46,26 @@ thing I like to do is setup the virtualenv to work well with my current
 projects folder. I use a projects folder in the home directory for my web work
 and applications. Edit your postactivate file (**~/.virtualenvs/postactivate**)::
 
-    #!/bin/bash
-    # This hook is run after every virtualenv is activated.
+    # source postactivate hook
+    _HOOK_PATH=bin/postactivate
+    _PROJECT_FILE=$VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME
 
-    proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}')
-    if [ -d ~/projects/$proj_name ]; then
-        cd ~/projects/$proj_name
+    if [ -s $_PROJECT_FILE ]; then
+        export _PROJECT_DIR=$(cat $_PROJECT_FILE)
+        _HOOK=$_PROJECT_DIR/$_HOOK_PATH
+        [ -f $_HOOK ] && . $_HOOK
     fi
-    export PS1="\n$PS1"
+
+Your postdeactivate file (**~/.virtualenvs/postdeactivate**)::
+
+    # source postdeactivate hook
+    _HOOK_PATH=bin/postdeactivate
+
+    if [ -n "$_PROJECT_DIR" ]; then
+        _HOOK=$_PROJECT_DIR/$_HOOK_PATH
+        [ -f $_HOOK ] && . $_HOOK
+        unset _PROJECT_DIR
+    fi
 
 Your postmkvirtualenv file (**~/.virtualenvs/postmkvirtualenv**)::
 
