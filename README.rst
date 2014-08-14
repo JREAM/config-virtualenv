@@ -27,6 +27,7 @@ commands::
 
     mkdir ~/.virtualenvs
     echo "export WORKON_HOME=~/.virtualenvs" >> ~/.bashrc
+    export PROJECT_HOME=~/projects
     echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
     echo "export PIP_VIRTUALENV_BASE=~/.virtualenvs" >> ~/.bashrc
 
@@ -85,7 +86,7 @@ Your predeactivate file (**~/.virtualenvs/predeactivate**)::
     cd
 
 After these are edited, you will be able to create a new virtualenv with
-**mkvirtualenv project_name** and when you do a folder named **project_name**
+**mkproject project_name** and when you do a folder named **project_name**
 will be created in ~/projects. You will automatically CD into that directory
 and when you deactivate you will be placed back in your home folder. Pretty
 neat.
