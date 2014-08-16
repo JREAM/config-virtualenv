@@ -1,25 +1,17 @@
-Sackett Style Virtual Environment Setup
-============
+## VirtualEnv Config
+### Sackett Flavor
+#### Forked from the infamous Dan E. Sackett
 
-This is my ideal setup when dealing with Django and Python. A lot is borrowed
-from work environments and others I have seen across the web. Feel free to use
-some of it or all of it if you'd like.
 
 Virtualenv and Virtualenv Wrapper
 --------------------------------
 
-It's important when working with Django to have an environment you can easily
-reproduce. With Virtualenv you can isolate your environment on a per project
-basis to make it easier to manage. Here's a good guide on getting that setup::
-
+    # Start with getting PIP installed if not already setup
     sudo apt-get install python-setuptools
     sudo easy_install pip
 
-Pip will allow you to manage your python packages easily. We'll use it to
-install Virtualenv and virtualenvwrapper::
-
-    sudo pip install virtualenv
-    sudo pip install virtualenvwrapper
+    # Global install
+    sudo pip install virtualenv virtualenvwrapper
 
 A practice I use at work is to keep the virtual environments in a central
 location. I keep mine in the home root so we can do so with the following
