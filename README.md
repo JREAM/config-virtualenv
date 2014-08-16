@@ -1,21 +1,19 @@
 ## VirtualEnv Config
-### Sackett Flavor
-#### Forked from the infamous Dan E. Sackett
+
+Manages Virtual Environments even better. All credit due to the infamous [Dan Sackett](https://github.com/dansackett) whom I forked this from and revised for myself.
 
 
-Virtualenv and Virtualenv Wrapper
---------------------------------
+### VirtualEnv and VirtualEnv Wrapper
+Install Python PIP (Package Manager) if not already installed.
 
-    # Start with getting PIP installed if not already setup
     sudo apt-get install python-setuptools
     sudo easy_install pip
 
-    # Global install
+Globally Install our two items
+
     sudo pip install virtualenv virtualenvwrapper
 
-A practice I use at work is to keep the virtual environments in a central
-location. I keep mine in the home root so we can do so with the following
-commands::
+Keep the Virtual Environments in a central location. The main users `~/` root folder run these commands:
 
     mkdir ~/.virtualenvs
     echo "export WORKON_HOME=~/.virtualenvs" >> ~/.bashrc
