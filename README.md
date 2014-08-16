@@ -18,6 +18,11 @@ Work on a virtual environment
 
     $ workon <name>
 
+Remove a virtual environment
+
+    $ rmvirtualenv <name>
+    # (Then proceed to remove your project folder)
+
 # Installation
 
 ### 1: Install Packages
