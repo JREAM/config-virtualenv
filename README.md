@@ -1,9 +1,26 @@
-## VirtualEnv Config
-
-Manages Virtual Environments even better. All credit due to the infamous [Dan Sackett](https://github.com/dansackett) whom I forked this from and revised for myself.
+# VirtualEnv Config
 
 
-### VirtualEnv and VirtualEnv Wrapper
+This allows you to easily jump from project to in different virtual environments even easier. All credit is due to the infamous [Dan Sackett](https://github.com/dansackett) whom I forked this from and revised for my own use.
+
+
+# Usage
+
+Create an environment and work on it
+
+    $ mkvirtualenv <name>
+    
+Deactivate a virtual environment
+
+    $ deactivate
+    
+Work on a virtual environment
+
+    $ workon <name>
+
+# Installation
+
+### 1: Install Packages
 Install Python PIP (Package Manager) if not already installed.
 
     sudo apt-get install python-setuptools
@@ -13,28 +30,25 @@ Globally Install our two items
 
     sudo pip install virtualenv virtualenvwrapper
 
-Keep the Virtual Environments in a central location. The main users `~/` root folder run these commands:
+
+### 2: Centralize the VirtualEnv settings
 
     mkdir ~/.virtualenvs
     echo "export WORKON_HOME=~/.virtualenvs" >> ~/.bashrc
     echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
     echo "export PIP_VIRTUALENV_BASE=~/.virtualenvs" >> ~/.bashrc
 
-These steps will setup the virtualenv and virtualenvwrapper to work together.
-We can do one last thing and add this line::
+### 3: Alias Creation
 
     echo "alias mkvirtualenv='mkvirtualenv --no-site-packages --distribute'" >> ~/.bashrc
 
-This alias will allow you to easily create a new virtualenv with the command
-mkvirtualenv without using site packages and using distribute instead of
-setuptools.::
+And Reload!
 
     source ~/.bashrc
 
-That will reload the bash prompt and get everything ready to use. The next
-thing I like to do is setup the virtualenv to work well with my current
-projects folder. I use a projects folder in the home directory for my web work
-and applications. Edit your postactivate file (**~/.virtualenvs/postactivate**)::
+### 4: Setup VirtualEnv Hooks 
+
+Edit your postactivate file (**~/.virtualenvs/postactivate**):
 
     # source postactivate hook
     _HOOK_PATH=bin/postactivate
@@ -46,7 +60,7 @@ and applications. Edit your postactivate file (**~/.virtualenvs/postactivate**):
         [ -f $_HOOK ] && . $_HOOK
     fi
 
-Your postdeactivate file (**~/.virtualenvs/postdeactivate**)::
+Your postdeactivate file (**~/.virtualenvs/postdeactivate**):
 
     # source postdeactivate hook
     _HOOK_PATH=bin/postdeactivate
@@ -57,7 +71,9 @@ Your postdeactivate file (**~/.virtualenvs/postdeactivate**)::
         unset _PROJECT_DIR
     fi
 
-Your postmkvirtualenv file (**~/.virtualenvs/postmkvirtualenv**)::
+Your postmkvirtualenv file (**~/.virtualenvs/postmkvirtualenv**):
+
+**NOTE: If you are not storing files in `~/projects/` Then change it here!**
 
     #!/bin/bash
     # This hook is run after a new virtualenv is activated.
@@ -73,9 +89,3 @@ Your predeactivate file (**~/.virtualenvs/predeactivate**)::
     # This hook is run before every virtualenv is deactivated.
 
     cd
-
-After these are edited, you will be able to create a new virtualenv with
-**mkvirtualenv project_name** and when you do a folder named **project_name**
-will be created in ~/projects. You will automatically CD into that directory
-and when you deactivate you will be placed back in your home folder. Pretty
-neat.
