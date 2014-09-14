@@ -25,6 +25,14 @@ Remove a virtual environment
 
 # Installation
 
+## Auto Installation
+
+Run the following command (You might have to `$ chmod +x autorun.sh`):
+
+    $ bash autorun.sh
+
+## Manual Installation
+
 ### 1: Install Packages
 Install Python PIP (Package Manager) if not already installed.
 
